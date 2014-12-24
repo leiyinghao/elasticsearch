@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def search
+      @users = User.search(
+      query: {
+        multi_match: {
+          query: params[:q].to_s,
+          fields: ['name', 'desc']
+        }
+      }
+    ).records
+
+
+  end
+
+
   # GET /users
   # GET /users.json
   def index
@@ -60,6 +74,8 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
