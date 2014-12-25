@@ -1,1 +1,3 @@
- bundle  exec  rake  environment  elasticsearch:import:model  CLASS='User' FORCE=y
+elasticsearch  demo project 
+
+bundle  exec  rake  environment  elasticsearch:import:model  CLASS='User' FORCE=y
